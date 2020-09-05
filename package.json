@@ -1,0 +1,33 @@
+{
+  "name": "luna-wizard",
+  "version": "0.1.0",
+  "description": "A CLI tool for easy setup and configuration of RPG Maker plugin's made with LunaTea.",
+  "main": "index.js",
+  "bin": {
+    "luna-wizard": "test.js"
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "build": "lix hxml/compile.hxml",
+    "test": "lix hxml/test.hxml"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LunaTechsDev/LunaWizard.git"
+  },
+  "keywords": [
+    "lunatechs",
+    "cli",
+    "rpg",
+    "maker",
+    "plugins"
+  ],
+  "author": "LunaTechs | inc0der",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LunaTechsDev/LunaWizard/issues"
+  },
+  "homepage": "https://github.com/LunaTechsDev/LunaWizard#readme"
+}

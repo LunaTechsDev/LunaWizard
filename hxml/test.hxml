@@ -1,0 +1,14 @@
+ -lib utest
+ -lib hxnodejs
+
+-cp ./src
+-cp ./tests
+-js ./bin/test.js
+
+--debug
+
+--main TestAll
+
+--dce full
+-D utest
+-D UTEST_PRINT_TESTS

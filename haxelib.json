@@ -1,0 +1,20 @@
+{
+  "name": "luna_wizard",
+  "url": "https://github.com/LunaTecshDev/luna-wizard/",
+  "license": "MIT",
+  "tags": [
+    "cross",
+    "rpg",
+    "maker",
+    "luna"
+  ],
+  "description": "A CLI tool to quickly generate a project for LunaTechs plugins",
+  "version": "0.1.0",
+  "classPath": "src/",
+  "contributors": ["inc0der"],
+  "releasenote": "",
+  "dependencies": {
+    "tink_cli": ""
+  },
+  "main": "Main"
+}

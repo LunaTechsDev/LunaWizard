@@ -1,0 +1,19 @@
+ -lib hxnodejs
+
+-cp src
+
+--debug
+
+# -D analyzer-optimize
+
+--no-opt
+--no-inline
+
+--dce full
+
+--main Main
+
+-D js-es=6
+
+--js bin/wizard.js
+--macro src.Macro.shebang()

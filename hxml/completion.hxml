@@ -1,0 +1,7 @@
+ -lib hxnodejs
+ -lib utest
+
+-cp src
+-cp tests
+
+--js bin/wizard.js
