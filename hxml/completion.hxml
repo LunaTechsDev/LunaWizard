@@ -1,5 +1,6 @@
  -lib hxnodejs
  -lib utest
+  -lib mcli
 
 -cp src
 -cp tests
