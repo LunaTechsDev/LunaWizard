@@ -1,0 +1,5 @@
+# @install: lix --silent download "gh://github.com/inc0der/hxprompts#8aed88bc7922e76062c992ba2732631de12fc3eb" into prompts/2.0.8/github/8aed88bc7922e76062c992ba2732631de12fc3eb
+-lib hxnodejs
+# -cp ${HAXE_LIBCACHE}/prompts/2.0.8/github/8aed88bc7922e76062c992ba2732631de12fc3eb/src/
+-cp P:\Programming\Haxe\hxprompts/src/
+-D prompts=2.0.8
