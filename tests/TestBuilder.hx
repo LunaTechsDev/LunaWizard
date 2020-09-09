@@ -11,7 +11,7 @@ class TestBuilder extends Test {
   function setupClass() {
     var path = Path.parse(Sys.getCwd());
     if (path.base != 'temp') {
-      Sys.setCwd('./tests/temp/');
+      Sys.setCwd(Path.resolve('./tests/temp/'));
     }
   }
 

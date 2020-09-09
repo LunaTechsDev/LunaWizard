@@ -15,7 +15,7 @@ class TestNodePackage extends Test {
   function setupClass() {
     var path = Path.parse(Sys.getCwd());
     if (path.base != 'temp') {
-      Sys.setCwd('./tests/temp/');
+      Sys.setCwd(Path.resolve('./tests/temp/'));
     }
   }
 
@@ -25,6 +25,7 @@ class TestNodePackage extends Test {
   }
 
   function testInstall() {
+    NodePackage.createPackageJson();
     var result = NodePackage.install('is-sorted');
     var packageJson = File.read('${Sys.getCwd()}/package-lock.json').readAll().toString();
     var data: Dynamic = Json.parse(packageJson);
