@@ -6,8 +6,6 @@ import sys.FileSystem;
 import sys.io.File;
 
 class NodePackage {
-  private static var _command = Sys.systemName() == 'Windows' ? 'npm.cmd' : 'npm';
-
   public static function createPackageJson() {
     var path: String = '${Sys.getCwd()}/package.json';
     var packageData = {
@@ -26,6 +24,6 @@ class NodePackage {
       args.push('-D');
     }
     
-    return ChildSpawn.run(_command, args);
+    return ChildSpawn.run('npm', args);
   }
 }

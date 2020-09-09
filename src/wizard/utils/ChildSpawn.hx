@@ -13,6 +13,8 @@ class ChildSpawn {
   private static var _stringDecoder = new StringDecoder('utf8');
 
   public static function run(command: String, args: Array<String>): SpawnResult {
+    var command = Sys.systemName() == 'Windows' ? '${command}.cmd' : command;
+
     return try {
       var status: Bool = false;
       var message: String = '';
