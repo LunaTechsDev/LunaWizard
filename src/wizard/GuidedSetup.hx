@@ -40,7 +40,10 @@ class GuidedSetup {
       if (!FileSystem.exists(answers.cwd)) {
         FileSystem.createDirectory(answers.cwd);
       }
-      Builder.newProject(answers.cwd);
+      if (answers.cwd != null) {
+        Sys.setCwd(answers.cwd);
+      }
+      Builder.newProject(Sys.getCwd());
       if (answers.autoInstall) {
         NodePackage.install('lix');
       }
