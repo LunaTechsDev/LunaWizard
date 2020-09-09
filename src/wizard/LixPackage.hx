@@ -6,6 +6,10 @@ class LixPackage {
     return NodePackage.npx('lix', args);
   }
 
+  public static function init(): Bool {
+    return NodePackage.npx('lix', ['scope','create']).status;
+  }
+
   public static function isInstalled(): Bool {
     return NodePackage.npx('lix', ['--help']).status;
   }
