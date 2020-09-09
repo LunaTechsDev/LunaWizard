@@ -26,6 +26,6 @@ class NodePackage {
       args.push('-D');
     }
     
-    return ChildSpawn.run(_command, ['install', '--save', name]);
+    return ChildSpawn.run(_command, args);
   }
 }
