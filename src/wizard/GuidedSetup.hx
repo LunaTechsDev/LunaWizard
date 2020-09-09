@@ -1,9 +1,8 @@
 package wizard;
 
 import prompts.Prompter;
+import js.node.Path;
 
-// import haxe.io.Path;
-// import sys.FileSystem;
 class GuidedSetup {
   public static function start() {
     Prompter.call([
@@ -11,7 +10,8 @@ class GuidedSetup {
         type: 'text',
         name: 'cwd',
         message: 'Where would you like to create the project?',
-        initial: './'
+        initial: './',
+        format: (v) -> Path.resolve(v)
       },
       {
         type: 'text',
