@@ -1,4 +1,4 @@
-# @install: lix --silent download "gh://github.com/inc0der/hxprompts#a9f9785cfad20d56b1bb5b76b11b99672ad58c42" into prompts/2.0.8/github/a9f9785cfad20d56b1bb5b76b11b99672ad58c42
+# @install: lix --silent download "gh://github.com/inc0der/hxprompts#47552003cce5bae4838c5ae7398e00054d8061e0" into prompts/2.0.8/github/47552003cce5bae4838c5ae7398e00054d8061e0
 -lib hxnodejs
--cp ${HAXE_LIBCACHE}/prompts/2.0.8/github/a9f9785cfad20d56b1bb5b76b11b99672ad58c42/src/
+-cp ${HAXE_LIBCACHE}/prompts/2.0.8/github/47552003cce5bae4838c5ae7398e00054d8061e0/src/
 -D prompts=2.0.8
