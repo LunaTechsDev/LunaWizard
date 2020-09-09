@@ -4,6 +4,7 @@ import js.node.ChildProcess;
 import js.node.StringDecoder;
 
 typedef SpawnResult = {
+  var error: js.lib.Error;
   var message: String;
   var status: Bool;
 }
@@ -26,6 +27,7 @@ class ChildSpawn {
       }
 
       return {
+        error: child.error,
         message: message,
         status: status
       }
