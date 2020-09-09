@@ -4,7 +4,6 @@ import js.node.ChildProcess;
 import js.node.StringDecoder;
 
 typedef SpawnResult = {
-  var error: js.lib.Error;
   var message: String;
   var status: Bool;
 }
@@ -20,18 +19,20 @@ class ChildSpawn {
       var message: String = '';
       var child = ChildProcess.spawnSync('${command}', args);
 
-      if (child.status == 0) {
-        status = true;
-        message = _stringDecoder.end(child.stdout);
-      } else if (child.status == 1) {
-        status = false;
+      status = child.status == 0;
+      message = _stringDecoder.end(child.stdout);
+
+      if (child.stderr != null) {
         message = _stringDecoder.end(child.stderr);
       }
 
+      if (child.error != null) {
+        message = child.error.message;
+      }
+
       return {
-        error: child.error,
         message: message,
-        status: status
+        status: status,
       }
     } catch (error) {
       throw error.message;
