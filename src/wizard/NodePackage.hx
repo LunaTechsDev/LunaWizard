@@ -18,6 +18,11 @@ class NodePackage {
     }
   }
 
+  public static function npx(command, args: Array<String>): SpawnResult {
+    args.unshift(command);
+    return ChildSpawn.run('npx', args);
+  }
+
   public static function install(name: String, ?asDev: Bool = false): SpawnResult {
     var args = ['install', '--save', name];
     if (asDev) {
