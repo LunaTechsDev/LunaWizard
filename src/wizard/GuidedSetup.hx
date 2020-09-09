@@ -1,5 +1,6 @@
 package wizard;
 
+import sys.FileSystem;
 import prompts.Prompter;
 import js.node.Path;
 
@@ -36,6 +37,9 @@ class GuidedSetup {
         message: 'Would you like LunaWizard to auto install required packages?'
       }
     ]).then((answers: Dynamic) -> {
+      if (!FileSystem.exists(answers.cwd)) {
+        FileSystem.createDirectory(answers.cwd);
+      }
       Builder.newProject(answers.cwd);
       if (answers.autoInstall) {
         NodePackage.install('lix');
