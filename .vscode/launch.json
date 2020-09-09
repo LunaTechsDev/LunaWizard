@@ -9,8 +9,9 @@
       "request": "launch",
       "name": "Launch Wizard",
       "program": "${workspaceFolder}/bin/wizard.js",
-      "args": ["--path="],
+      // "args": ["--path="],
       "preLaunchTask": "haxe: hxml/compile.hxml",
+      "console": "integratedTerminal",
       "sourceMaps": true
     },
     {

@@ -29,5 +29,9 @@
   "bugs": {
     "url": "https://github.com/LunaTechsDev/LunaWizard/issues"
   },
-  "homepage": "https://github.com/LunaTechsDev/LunaWizard#readme"
+  "homepage": "https://github.com/LunaTechsDev/LunaWizard#readme",
+  "dependencies": {
+    "lix": "^15.9.0",
+    "prompts": "^2.3.2"
+  }
 }

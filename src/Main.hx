@@ -1,4 +1,4 @@
-import wizard.Builder;
+import wizard.GuidedSetup;
 import mcli.CommandLine;
 
 class Main extends CommandLine {
@@ -15,8 +15,7 @@ class Main extends CommandLine {
 
   public function init(?path: String) {
     // run the wizard setup guide
-    var projectPath = path == null ? path : Sys.getCwd();
-    Builder.newProject(projectPath);
+    GuidedSetup.start();
   }
 
   public function build(path: String) {
