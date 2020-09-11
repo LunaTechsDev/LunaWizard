@@ -9,10 +9,7 @@ class Main extends CommandLine {
     // print usage details
   }
 
-  public function runDefault() {
-    // run the wizard setup guide
-    init();
-  }
+  public function runDefault() {}
 
   public function init(?path: String) {
     // run the wizard setup guide
