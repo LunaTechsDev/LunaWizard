@@ -46,13 +46,7 @@ class GuidedSetup {
       Builder.newProject(Sys.getCwd());
       NodePackage.createPackageJson();
       if (answers.autoInstall) {
-        var lix = NodePackage.install('lix');
-        trace(lix.message);
-        if (lix.status) {
-          LixPackage.init();
-          var lunaTea = LixPackage.installFromGithub('LunaTechsDev', 'LunaTea');
-          trace(lunaTea.message);
-        }
+        Builder.installRequiredPackages();
       }
     });
   }
