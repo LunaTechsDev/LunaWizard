@@ -83,7 +83,7 @@ class Builder {
         var jsTargetPath = ereg.matched(2).trim();
         var code = File.getContent(Path.resolve(jsTargetPath));
         try {
-          File.saveContent('temp.${jsTargetPath}', Napkin.parse(code));
+          File.saveContent(jsTargetPath, Napkin.parse(code));
         } catch (error) {
           trace(error.message);
         }
