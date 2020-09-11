@@ -42,4 +42,15 @@ class TestBuilder extends Test {
     var exists = FileSystem.exists('${Sys.getCwd()}/hxformat.json');
     Assert.isTrue(exists, 'hxformat.json should exist');
   }
+
+  function testCompileFromSource() {
+    var hxmlPath = Path.resolve('../fixtures/compile.hxml');
+    Sys.setCwd(Path.dirname(hxmlPath));
+    Builder.compileFromSource(hxmlPath);
+    var exists = FileSystem.exists('${Sys.getCwd()}/temp.output.js');
+    Assert.isTrue(exists, 'temp.output.js should exist');
+    // Cleanup
+    FileSystem.deleteFile('${Sys.getCwd()}/output.js');
+    FileSystem.deleteFile('${Sys.getCwd()}/temp.output.js');
+  }
 }
