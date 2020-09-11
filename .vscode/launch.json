@@ -17,6 +17,16 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "Launch Build",
+      "program": "${workspaceFolder}/bin/wizard.js",
+      "args": ["--build", "./hxml/test.hxml"],
+      "preLaunchTask": "haxe: hxml/compile.hxml",
+      "console": "integratedTerminal",
+      "sourceMaps": true
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "Launch Tests",
       "program": "${workspaceFolder}/bin/test.js",
       "preLaunchTask": "haxe: hxml/test.hxml",
