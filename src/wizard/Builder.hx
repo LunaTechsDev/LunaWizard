@@ -67,4 +67,14 @@ class Builder {
       trace(lunaTea.message);
     }
   }
+
+  public static function compileFromSource(?hxmlPath: String) {
+    var lix = LixPackage.compile(hxmlPath);
+    trace(lix.message);
+    if (!lix.status) {
+      trace('failed to compile project from ${hxmlPath}');
+    } else {
+      // NodePackage.npx('napkin', [''])
+    }
+  }
 }
