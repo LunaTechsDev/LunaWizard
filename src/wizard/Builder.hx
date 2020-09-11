@@ -4,6 +4,9 @@ import haxe.Json;
 import js.node.Path;
 import sys.io.File;
 import sys.FileSystem;
+import napkin.Napkin;
+
+using StringTools;
 
 class Builder {
   public static var path: String = Sys.getCwd();
@@ -74,7 +77,17 @@ class Builder {
     if (!lix.status) {
       trace('failed to compile project from ${hxmlPath}');
     } else {
-      // NodePackage.npx('napkin', [''])
+      var hxmlData = File.getContent(hxmlPath);
+      var ereg = new EReg('(--js)(.*)', 'g');
+      if (ereg.match(hxmlData)) {
+        var jsTargetPath = ereg.matched(2).trim();
+        var code = File.getContent(Path.resolve(jsTargetPath));
+        try {
+          File.saveContent('temp.${jsTargetPath}', Napkin.parse(code));
+        } catch (error) {
+          trace(error.message);
+        }
+      }
     }
   }
 }
