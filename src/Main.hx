@@ -1,3 +1,4 @@
+import wizard.Builder;
 import wizard.GuidedSetup;
 import mcli.CommandLine;
 
@@ -18,8 +19,9 @@ class Main extends CommandLine {
     GuidedSetup.start();
   }
 
-  public function build(path: String) {
+  public function build(?hxml: String) {
     // Build from source files
+    Builder.compileFromSource(hxml);
   }
 
   public static function main() {
