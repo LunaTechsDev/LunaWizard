@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/LunaTechsDev/LunaWizard#readme",
   "dependencies": {
-    "@lunatechs/lunatea-napkin": "^1.0.0",
+    "@lunatechs/lunatea-napkin": "^1.0.2",
     "lix": "^15.9.0",
     "prompts": "^2.3.2"
   }
