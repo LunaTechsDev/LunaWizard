@@ -4,7 +4,7 @@
   "description": "A CLI tool for easy setup and configuration of RPG Maker plugin's made with LunaTea.",
   "main": "index.js",
   "bin": {
-    "luna-wizard": "test.js"
+    "luna-wizard": "bin/wizard.js"
   },
   "directories": {
     "test": "tests"
