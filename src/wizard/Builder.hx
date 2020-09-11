@@ -78,7 +78,7 @@ class Builder {
       trace('failed to compile project from ${hxmlPath}');
     } else {
       var hxmlData = File.getContent(hxmlPath);
-      var ereg = new EReg('(--js)(.*)', 'g');
+      var ereg = new EReg('(-js|--js)(.*)', 'g');
       if (ereg.match(hxmlData)) {
         var jsTargetPath = ereg.matched(2).trim();
         var code = File.getContent(Path.resolve(jsTargetPath));
