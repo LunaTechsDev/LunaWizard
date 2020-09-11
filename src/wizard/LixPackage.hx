@@ -1,5 +1,7 @@
 package wizard;
 
+import wizard.utils.ChildSpawn.SpawnResult;
+
 class LixPackage {
   private static function _install(args: Array<String>) {
     args.unshift('install');
@@ -9,9 +11,16 @@ class LixPackage {
   public static function init(): Bool {
     return NodePackage.npx('lix', ['scope','create']).status;
   }
-
+  
   public static function isInstalled(): Bool {
     return NodePackage.npx('lix', ['--help']).status;
+  }
+  
+  public static function compile(hxmlPath: String): SpawnResult {
+    if (hxmlPath == null) {
+      hxmlPath = 'compile.hxml';
+    }
+    return NodePackage.npx('lix', [hxmlPath]);
   }
 
   public static function installFromGitlab(user: String, repo: String) {
