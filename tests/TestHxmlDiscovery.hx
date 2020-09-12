@@ -15,6 +15,7 @@ class TestHxmlDiscovery extends Test {
   }
 
   function testHxmlDsicovery() {
+    Sys.setCwd(Path.resolve('../../'));
     var hxmlFiles = HxmlDiscovery.discover();
     Assert.isTrue(hxmlFiles.length > 0);
   }

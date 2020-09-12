@@ -41,7 +41,7 @@ class HxmlDiscovery {
         discovered.push(path);
       }
     }
-    Sys.setCwd(Path.resolve('../../'));
+
     walk(Sys.getCwd(), onFile);
 
     return discovered;
