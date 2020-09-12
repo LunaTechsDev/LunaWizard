@@ -22,6 +22,7 @@ class Builder {
     addGamesDirectory(Sys.getCwd());
     addCheckstyleJson(Sys.getCwd());
     addHaxeFormatJson(Sys.getCwd());
+    addCompileHxml(Sys.getCwd());
   }
 
   public static function addSrcDirectory(path: String) {
@@ -53,6 +54,15 @@ class Builder {
       var fileData: String = File.getContent(jsonPath).toString();
 
       File.write('${path}/hxformat.json', Json.parse(fileData));
+    }
+  }
+
+  public static function addCompileHxml(path: String) {
+    if (!FileSystem.exists('${path}/compile.hxml')) {
+      var jsonPath = '${_scaffoldDir}/compile.hxml';
+      var fileData: String = File.getContent(jsonPath);
+
+      File.saveContent('${path}/compile.hxml', fileData);
     }
   }
 
