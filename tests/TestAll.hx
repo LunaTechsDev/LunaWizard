@@ -7,6 +7,7 @@ class TestAll {
     runner.addCase(new TestBuilder());
     runner.addCase(new TestNodePackage());
     runner.addCase(new TestLixPackage());
+    runner.addCase(new TestHxmlDiscovery());
     Report.create(runner);
     runner.run();
   }

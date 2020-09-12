@@ -19,7 +19,7 @@
       "request": "launch",
       "name": "Launch Build",
       "program": "${workspaceFolder}/bin/wizard.js",
-      "args": ["--build", "./hxml/test.hxml"],
+      "args": ["--build"],
       "preLaunchTask": "haxe: hxml/compile.hxml",
       "console": "integratedTerminal",
       "sourceMaps": true
