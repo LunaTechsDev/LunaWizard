@@ -4,17 +4,24 @@ import mcli.CommandLine;
 
 import commands.Build;
 
+/**
+  Run a setup guide to get started in creating a new project.
+**/
 class Main extends CommandLine {
-  public var watch: Bool;
-
   public function help() {
-    // print usage details
+    Sys.println(this.showUsage());
+    Sys.exit(0);
   }
 
   public function runDefault() {
     // GuidedSetup.start();
   }
 
+  /**
+    Build your project from the hxml file given. If no path was given
+    then LunaWizard will find all .hxml files in your project and prompt you
+    to use which ones for compilation.
+  **/
   public function build(d: Dispatch) {
     d.dispatch(new Build());
   }
