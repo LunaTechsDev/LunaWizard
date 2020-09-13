@@ -1,50 +1,32 @@
-import prompts.Prompter;
-import wizard.utils.HxmlDiscovery;
-import wizard.Builder;
+import mcli.Dispatch;
 import wizard.GuidedSetup;
 import mcli.CommandLine;
 
-class Main extends CommandLine {
-  public var watch: Bool;
+import commands.Build;
 
+/**
+  Run a setup guide to get started in creating a new project.
+**/
+class Main extends CommandLine {
   public function help() {
-    // print usage details
+    Sys.println(this.showUsage());
+    Sys.exit(0);
   }
 
-  public function runDefault() {}
-
-  public function init(?path: String) {
-    // run the wizard setup guide
+  public function runDefault() {
+    if (Sys.args().length > 0) {
+      return;
+    }
     GuidedSetup.start();
   }
 
-  public function build(?hxml: String) {
-    // Build from source files
-    if (hxml == null) {
-      var hxmlPaths = HxmlDiscovery.discover();
-      var choices = hxmlPaths.map(path -> {
-        return {
-          title: path,
-          value: path,
-          description: '',
-          disabled: false,
-          selected: false
-        }
-      });
-      Prompter.call({
-        type: 'multiselect',
-        name: 'hxmlPaths',
-        message: 'Choose an hxml to build from',
-        choices: choices
-      }).then((response: Dynamic) -> {
-        var paths: Array<String> = response.hxmlPaths;
-        for (path in paths) {
-          Builder.compileFromSource(path);
-        }
-      });
-      return;
-     }
-    Builder.compileFromSource(hxml);
+  /**
+    Build your project from the hxml file given. If no path was given
+    then LunaWizard will find all .hxml files in your project and prompt you
+    to use which ones for compilation.
+  **/
+  public function build(d: Dispatch) {
+    d.dispatch(new Build());
   }
 
   public static function main() {

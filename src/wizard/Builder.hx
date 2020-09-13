@@ -81,7 +81,7 @@ class Builder {
     }
   }
 
-  public static function compileFromSource(?hxmlPath: String) {
+  public static function compileFromSource(?hxmlPath: String, ?usePrettier = true) {
     var lix = LixPackage.compile(hxmlPath);
     trace(lix.message);
     if (!lix.status) {
@@ -93,7 +93,7 @@ class Builder {
         var jsTargetPath = ereg.matched(2).trim();
         var code = File.getContent(Path.resolve(jsTargetPath));
         try {
-          File.saveContent(jsTargetPath, Napkin.parse(code));
+          File.saveContent(jsTargetPath, Napkin.parse(code, usePrettier));
         } catch (error) {
           trace(error.message);
         }
