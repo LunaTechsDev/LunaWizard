@@ -5,6 +5,11 @@ import wizard.utils.HxmlDiscovery;
 import wizard.Builder;
 
 class Build extends mcli.CommandLine {
+  /**
+    Disable application of prettier's rules
+  **/
+  public var noPrettier: Bool = false;
+
   public function runDefault(?hxml: String) {
     // Build from source files
     if (hxml == null) {
@@ -26,7 +31,7 @@ class Build extends mcli.CommandLine {
       }).then((response: Dynamic) -> {
         var paths: Array<String> = response.hxmlPaths;
         for (path in paths) {
-          Builder.compileFromSource(path);
+          Builder.compileFromSource(path, !noPrettier);
         }
       });
       return;

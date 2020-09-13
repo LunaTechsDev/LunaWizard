@@ -7,5 +7,5 @@ package napkin;
    *
    * @param {code} The code to transform and prettify.
    */
-  public static function parse(code: String): String;
+  public static function parse(code: String, usePrettier: Bool): String;
 }
