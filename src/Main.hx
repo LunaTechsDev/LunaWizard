@@ -14,7 +14,10 @@ class Main extends CommandLine {
   }
 
   public function runDefault() {
-    // GuidedSetup.start();
+    if (Sys.args().length > 0) {
+      return;
+    }
+    GuidedSetup.start();
   }
 
   /**
