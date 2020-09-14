@@ -1,0 +1,4 @@
+# @install: lix --silent download "gh://github.com/inc0der/hxchokidar#4d1b909d6a73c0ed3462247303492a0f0c0ffbfa" into hxchokidar/0.0.0/github/4d1b909d6a73c0ed3462247303492a0f0c0ffbfa
+-lib hxnodejs
+-cp ${HAXE_LIBCACHE}/hxchokidar/0.0.0/github/4d1b909d6a73c0ed3462247303492a0f0c0ffbfa/src
+-D hxchokidar=0.0.0
