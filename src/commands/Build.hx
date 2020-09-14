@@ -32,7 +32,8 @@ class Build extends mcli.CommandLine {
   private function _watch(sourceDir: String, hxml: String) {
     Chokidar.watch(sourceDir, {
       persistent: true,
-      usePolling: true
+      usePolling: true,
+      ignoreInitial: false
     })
     .on('change', (path, stats) -> {
       Builder.compileFromSource(hxml, !noPrettier);
