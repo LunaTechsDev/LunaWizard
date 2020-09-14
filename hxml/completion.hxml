@@ -2,6 +2,7 @@
  -lib utest
 -lib prompts
 -lib mcli
+-lib hxchokidar
 
 -cp src
 -cp tests

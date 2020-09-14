@@ -1,6 +1,7 @@
  -lib hxnodejs
  -lib prompts
  -lib mcli
+-lib hxchokidar
 
 -cp src
 
