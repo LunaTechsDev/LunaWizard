@@ -1,6 +1,6 @@
 {
   "name": "@lunatechs/luna-wizard",
-  "version": "0.1.0-beta.0",
+  "version": "0.2.0-beta.0",
   "description": "A CLI tool for easy setup and configuration of RPG Maker plugin's made with LunaTea.",
   "main": "index.js",
   "bin": {
@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/LunaTechsDev/LunaWizard#readme",
   "dependencies": {
-    "@lunatechs/lunatea-napkin": "^1.0.2",
+    "@lunatechs/lunatea-napkin": "^1.1.0",
     "chokidar": "^3.4.2",
     "lix": "^15.9.0",
     "prompts": "^2.3.2"
