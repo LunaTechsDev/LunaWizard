@@ -20,30 +20,35 @@ class Build extends mcli.CommandLine {
     Sys.exit(0);
   }
 
+  // private function _getHxmlChoices(): Array< {}
+  private function promptBuild(hxmlPaths) {
+    var choices = hxmlPaths.map(path -> {
+      return {
+        title: path,
+        value: path,
+        description: '',
+        disabled: false,
+        selected: false
+      }
+    });
+    Prompter.call({
+      type: 'multiselect',
+      name: 'hxmlPaths',
+      message: 'Choose an hxml(s) to build from',
+      choices: choices
+    })
+    .then((response: Dynamic) -> {
+      var paths: Array<String> = response.hxmlPaths;
+      for (path in paths) {
+        Builder.compileFromSource(path, !noPrettier);
+      }
+    });
+  }
+
   public function runDefault(?hxml: String) {
     // Build from source files
     if (hxml == null) {
-      var hxmlPaths = HxmlDiscovery.discover();
-      var choices = hxmlPaths.map(path -> {
-        return {
-          title: path,
-          value: path,
-          description: '',
-          disabled: false,
-          selected: false
-        }
-      });
-      Prompter.call({
-        type: 'multiselect',
-        name: 'hxmlPaths',
-        message: 'Choose an hxml to build from',
-        choices: choices
-      }).then((response: Dynamic) -> {
-        var paths: Array<String> = response.hxmlPaths;
-        for (path in paths) {
-          Builder.compileFromSource(path, !noPrettier);
-        }
-      });
+      promptBuild(HxmlDiscovery.discover());
       return;
     }
     Builder.compileFromSource(hxml);
