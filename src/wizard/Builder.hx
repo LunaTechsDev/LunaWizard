@@ -65,6 +65,21 @@ class Builder {
     }
   }
 
+  public static function fileBanner(filename) {
+    var date = Date.now();
+    return '/** ============================================================================
+ *
+ *  ${filename}
+ * 
+ *  Build Date: ${date.getDay()}/${date.getMonth()}/${date.getFullYear()}
+ * 
+ *  Made with LunaTea -- Haxe
+ *
+ * =============================================================================
+*/
+';
+  };
+
   public static function installRequiredPackages() {
     var napkin = NodePackage.install('@lunatechs/lunatea-napkin', true);
     var lix = NodePackage.install('lix');
@@ -89,14 +104,15 @@ class Builder {
       var hxmlData = File.getContent(hxmlPath);
       var ereg = new EReg('(-js|--js)(.*)', 'g');
       var matches = Utils.getMatches(ereg, hxmlData, 2);
-      var jsTargetPaths = matches.map((path: String )-> {
+      var jsTargetPaths = matches.map((path: String) -> {
         return path.trim();
       });
 
       for (path in jsTargetPaths) {
         var code = File.getContent(Path.resolve(path));
         try {
-          File.saveContent(path, Napkin.parse(code, usePrettier));
+          var filename = Path.parse(path).name;
+          File.saveContent(path, '${fileBanner(filename)} ${Napkin.parse(code, usePrettier)}');
         } catch (error) {
           trace(error.message);
         }
