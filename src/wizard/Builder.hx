@@ -1,6 +1,5 @@
 package wizard;
 
-import haxe.Json;
 import js.node.Path;
 import sys.io.File;
 import sys.FileSystem;
@@ -44,7 +43,7 @@ class Builder {
       var jsonPath = '${_scaffoldDir}/checkstyle.json';
       var fileData: String = File.getContent(jsonPath).toString();
 
-      File.write('${path}/checkstyle.json', Json.parse(fileData));
+      File.saveContent('${path}/checkstyle.json', fileData);
     }
   }
 
@@ -53,7 +52,7 @@ class Builder {
       var jsonPath = '${_scaffoldDir}/hxformat.json';
       var fileData: String = File.getContent(jsonPath).toString();
 
-      File.write('${path}/hxformat.json', Json.parse(fileData));
+      File.saveContent('${path}/hxformat.json', fileData);
     }
   }
 
