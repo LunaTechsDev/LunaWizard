@@ -10,7 +10,7 @@ using StringTools;
 class Builder {
   public static var path: String = Sys.getCwd();
   public static var programDir = Path.dirname(Sys.programPath());
-  private static var _scaffoldDir = '${Path.dirname(programDir)}/scaffold'; 
+  private static var _scaffoldDir = '${Path.dirname(programDir)}/scaffold';
 
   public static function newProject(?path: String) {
     if (path != null && path != '') {
@@ -88,11 +88,15 @@ class Builder {
     } else {
       var hxmlData = File.getContent(hxmlPath);
       var ereg = new EReg('(-js|--js)(.*)', 'g');
-      if (ereg.match(hxmlData)) {
-        var jsTargetPath = ereg.matched(2).trim();
-        var code = File.getContent(Path.resolve(jsTargetPath));
+      var matches = Utils.getMatches(ereg, hxmlData, 2);
+      var jsTargetPaths = matches.map((path: String )-> {
+        return path.trim();
+      });
+
+      for (path in jsTargetPaths) {
+        var code = File.getContent(Path.resolve(path));
         try {
-          File.saveContent(jsTargetPath, Napkin.parse(code, usePrettier));
+          File.saveContent(path, Napkin.parse(code, usePrettier));
         } catch (error) {
           trace(error.message);
         }
