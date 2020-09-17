@@ -62,7 +62,7 @@ class Build extends mcli.CommandLine {
       choices: choices
     })
     .then((response: Dynamic) -> {
-      if (watch != null) {
+      if (watch) {
         return _watch(_sourceDir, response.hxmlPath);
       }
       Builder.compileFromSource(response.hxmlPath, !noPrettier);
