@@ -1,4 +1,4 @@
-# @install: lix --silent download "gh://github.com/inc0der/hxlog#130e8b595e274bdf2fee44b3a1bd39055a2c5e5b" into hxlog/1.0.0/github/130e8b595e274bdf2fee44b3a1bd39055a2c5e5b
+# @install: lix --silent download "gh://github.com/inc0der/hxlog#8505164994f4345982201c133f3cc529c9b128af" into hxlog/1.0.0/github/8505164994f4345982201c133f3cc529c9b128af
 -lib hxnodejs
--cp ${HAXE_LIBCACHE}/hxlog/1.0.0/github/130e8b595e274bdf2fee44b3a1bd39055a2c5e5b/src
+-cp ${HAXE_LIBCACHE}/hxlog/1.0.0/github/8505164994f4345982201c133f3cc529c9b128af/src
 -D hxlog=1.0.0
