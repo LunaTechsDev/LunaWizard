@@ -4,13 +4,14 @@ import chokidar.Chokidar;
 import prompts.Prompter;
 import wizard.utils.HxmlDiscovery;
 import wizard.Builder;
-
+import wizard.utils.Logger;
 /**
   Build your project from the hxml file given. If no path was given
   then LunaWizard will find all .hxml files in your project and prompt you
   to use which ones for compilation.
 **/
 class Build extends mcli.CommandLine {
+  private var _log: Logger = new Logger();
   private var _sourceDir: String = '';
   /**
     Disable application of prettier's rules
@@ -30,8 +31,13 @@ class Build extends mcli.CommandLine {
       usePolling: true,
       ignoreInitial: false
     })
+    .on('ready', () -> {
+      _log.info('Watching for changes..');
+    })
     .on('change', (path, stats) -> {
+      _log.clearScreen();
       Builder.compileFromSource(hxml, !noPrettier);
+      _log.info('Watching for changes..');
     });
   }
 
@@ -58,6 +64,7 @@ class Build extends mcli.CommandLine {
     })
     .then((response: Dynamic) -> {
       if (_sourceDir != null) {
+        _log.clearScreen();
         return _watch(_sourceDir, response.hxmlPath);
       }
       Builder.compileFromSource(response.hxmlPath, !noPrettier);
