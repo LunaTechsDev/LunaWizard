@@ -3,6 +3,7 @@
 -lib prompts
 -lib mcli
 -lib hxchokidar
+-lib hxlog
 
 -cp src
 -cp tests
