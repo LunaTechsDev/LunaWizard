@@ -16,9 +16,9 @@ jobs:
       - uses: lix-pm/setup-lix@1.0.0 
         with:
           node-version: 12
+      - run: lix download
       - run: npm ci
       - run: npm run build
-      - run: npm test
 
   publish-npm:
     needs: build
