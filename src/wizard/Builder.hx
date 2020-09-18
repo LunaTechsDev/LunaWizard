@@ -86,24 +86,19 @@ class Builder {
   public static function installRequiredPackages() {
     var napkin = NodePackage.install('@lunatechs/lunatea-napkin', true);
     var lix = NodePackage.install('lix');
-    _log.info(napkin.message);
-    _log.info(lix.message);
-    if (!napkin.status) {
-      _log.error('Unable to install LunaTea Napkin, try manually installing using npm install --save-dev @lunatechs/lunatea-napkin');
-    }
+    _log.spawnResult(napkin, 'Installed lunatea-napkin', 'Unable to install lunatea-napkin');
+    _log.spawnResult(lix, 'Installed lix', 'Unable to install lix');
     if (lix.status) {
       LixPackage.init();
       var lunaTea = LixPackage.installFromGithub('LunaTechsDev', 'LunaTea');
-      _log.info(lunaTea.message);
+      _log.spawnResult(lunaTea, 'Installed LunaTea', 'Unable to install LunaTea');
     }
   }
 
   public static function compileFromSource(?hxmlPath: String, ?usePrettier = true) {
     var lix = LixPackage.compile(hxmlPath);
-    _log.info(lix.message);
-    if (!lix.status) {
-      _log.warn('unable compile project from ${hxmlPath}');
-    } else {
+    _log.spawnResult(lix, 'Succesfully compiled from hxml', 'Unable to compile from hxml');
+    if (lix.status) {
       var hxmlData = File.getContent(hxmlPath);
       var ereg = new EReg('(-js|--js)(.*)', 'g');
       var matches = Utils.getMatches(ereg, hxmlData, 2);
