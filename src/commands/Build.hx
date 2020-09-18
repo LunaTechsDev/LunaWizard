@@ -63,7 +63,7 @@ class Build extends mcli.CommandLine {
       choices: choices
     })
     .then((response: Dynamic) -> {
-      if (_sourceDir != null) {
+      if (_sourceDir != '') {
         _log.clearScreen();
         return _watch(_sourceDir, response.hxmlPath);
       }
