@@ -1,5 +1,6 @@
 package wizard.utils;
 
+import js.node.stream.Writable.IWritable;
 import wizard.utils.ChildSpawn.SpawnResult;
 import hxlog.Logger as HxLogger;
 
@@ -10,6 +11,11 @@ class Logger extends HxLogger {
       displayDateTime: false,
       displayFilePath: ''
     });
+  }
+
+  public function clearScreen() {
+    var stdout: IWritable = cast settings.stdOut;
+    stdout.write('\u001B[2J\u001B[0;0f');
   }
 
   public function spawnResult(result: SpawnResult, acceptMsg: String, refuseMsg: String) {
