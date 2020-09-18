@@ -35,6 +35,7 @@ class Build extends mcli.CommandLine {
       _log.info('Watching for changes..');
     })
     .on('change', (path, stats) -> {
+      _log.clearScreen();
       Builder.compileFromSource(hxml, !noPrettier);
       _log.info('Watching for changes..');
     });
@@ -63,6 +64,7 @@ class Build extends mcli.CommandLine {
     })
     .then((response: Dynamic) -> {
       if (_sourceDir != null) {
+        _log.clearScreen();
         return _watch(_sourceDir, response.hxmlPath);
       }
       Builder.compileFromSource(response.hxmlPath, !noPrettier);
