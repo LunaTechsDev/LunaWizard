@@ -4,10 +4,12 @@ import js.node.Path;
 import sys.io.File;
 import sys.FileSystem;
 import napkin.Napkin;
+import wizard.utils.Logger;
 
 using StringTools;
 
 class Builder {
+  private static var _log: Logger = new Logger();
   public static var path: String = Sys.getCwd();
   public static var programDir = Path.dirname(Sys.programPath());
   private static var _scaffoldDir = '${Path.dirname(programDir)}/scaffold';
@@ -22,6 +24,7 @@ class Builder {
     addCheckstyleJson(Sys.getCwd());
     addHaxeFormatJson(Sys.getCwd());
     addCompileHxml(Sys.getCwd());
+    _log.info('Static project files successfully created');
   }
 
   public static function addSrcDirectory(path: String) {
@@ -83,23 +86,23 @@ class Builder {
   public static function installRequiredPackages() {
     var napkin = NodePackage.install('@lunatechs/lunatea-napkin', true);
     var lix = NodePackage.install('lix');
-    trace(napkin.message);
-    trace(lix.message);
+    _log.info(napkin.message);
+    _log.info(lix.message);
     if (!napkin.status) {
-      trace('Unable to install LunaTea Napkin, try manually installing using npm install --save-dev @lunatechs/lunatea-napkin');
+      _log.error('Unable to install LunaTea Napkin, try manually installing using npm install --save-dev @lunatechs/lunatea-napkin');
     }
     if (lix.status) {
       LixPackage.init();
       var lunaTea = LixPackage.installFromGithub('LunaTechsDev', 'LunaTea');
-      trace(lunaTea.message);
+      _log.info(lunaTea.message);
     }
   }
 
   public static function compileFromSource(?hxmlPath: String, ?usePrettier = true) {
     var lix = LixPackage.compile(hxmlPath);
-    trace(lix.message);
+    _log.info(lix.message);
     if (!lix.status) {
-      trace('failed to compile project from ${hxmlPath}');
+      _log.warn('unable compile project from ${hxmlPath}');
     } else {
       var hxmlData = File.getContent(hxmlPath);
       var ereg = new EReg('(-js|--js)(.*)', 'g');
@@ -113,8 +116,8 @@ class Builder {
         try {
           var filename = Path.parse(path).name;
           File.saveContent(path, '${fileBanner(filename)} ${Napkin.parse(code, usePrettier)}');
-        } catch (error) {
-          trace(error.message);
+        } catch (error: js.lib.Error) {
+          _log.prettyError(error);
         }
       }
     }
