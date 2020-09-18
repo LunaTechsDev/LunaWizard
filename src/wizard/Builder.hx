@@ -71,7 +71,7 @@ class Builder {
  *
  *  ${filename}
  * 
- *  Build Date: ${date.getDay()}/${date.getMonth()}/${date.getFullYear()}
+ *  Build Date: ${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}
  * 
  *  Made with LunaTea -- Haxe
  *
