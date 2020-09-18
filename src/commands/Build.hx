@@ -20,12 +20,7 @@ class Build extends mcli.CommandLine {
   /** 
     Watch for changes to source files.
   **/
-  public var watch: Bool = false;
-
-  /**
-    The source directory to use when watching for file changes.
-  **/
-  public function sourceDir(path: String) {
+  public function watch(path: String) {
     _sourceDir = path;
   }
 
@@ -62,7 +57,7 @@ class Build extends mcli.CommandLine {
       choices: choices
     })
     .then((response: Dynamic) -> {
-      if (watch) {
+      if (_sourceDir != null) {
         return _watch(_sourceDir, response.hxmlPath);
       }
       Builder.compileFromSource(response.hxmlPath, !noPrettier);
