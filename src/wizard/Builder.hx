@@ -20,6 +20,8 @@ class Builder {
     }
 
     addSrcDirectory(Sys.getCwd());
+    addMainHaxeFile(Sys.getCwd());
+    addParamsFile(Sys.getCwd());
     addGamesDirectory(Sys.getCwd());
     addCheckstyleJson(Sys.getCwd());
     addHaxeFormatJson(Sys.getCwd());
@@ -30,6 +32,24 @@ class Builder {
   public static function addSrcDirectory(path: String) {
     if (!FileSystem.exists('${path}/src')) {
       FileSystem.createDirectory('${path}/src');
+    }
+  }
+
+  public static function addMainHaxeFile(path: String) {
+    var filePath = '${path}/src/Main.hx';
+    if (!FileSystem.exists(filePath)) {
+      var mainPath = '${_scaffoldDir}/Main.hx';
+      var fileData: String = File.getContent(mainPath);
+      File.saveContent(filePath, fileData);
+    }
+  }
+
+  public static function addParamsFile(path: String) {
+    var filePath = '${path}/src/Params.js';
+    if (!FileSystem.exists(filePath)) {
+      var paramsPath = '${_scaffoldDir}/Params.js';
+      var fileData: String = File.getContent(paramsPath);
+      File.saveContent(filePath, fileData);
     }
   }
 
@@ -65,6 +85,15 @@ class Builder {
       var fileData: String = File.getContent(jsonPath);
 
       File.saveContent('${path}/compile.hxml', fileData);
+    }
+  }
+
+  public static function addReadMe(path: String) {
+    var filePath = '${path}/README.md';
+    if (!FileSystem.exists(filePath)) {
+      var readmePath = '${_scaffoldDir}/README.md';
+      var fileData: String = File.getContent(readmePath);
+      File.saveContent(filePath, fileData);
     }
   }
 
