@@ -1,7 +1,7 @@
 package napkin;
 
 typedef NapkinOtpions = {
-  userPrettier: Bool,
+  usePrettier: Bool,
   removedUnusedClasses: Bool
 }
 
@@ -12,5 +12,5 @@ typedef NapkinOtpions = {
    *
    * @param {code} The code to transform and prettify.
    */
-  public static function parse(code: String, usePrettier: NapkinOtpions): String;
+  public static function parse(code: String, ?options: NapkinOtpions): String;
 }
