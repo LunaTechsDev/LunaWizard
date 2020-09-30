@@ -124,7 +124,7 @@ class Builder {
     }
   }
 
-  public static function compileFromSource(?hxmlPath: String, ?usePrettier = true) {
+  public static function compileFromSource(?hxmlPath: String, ?usePrettier = true, ?removeUnusedClasses = true) {
     var lix = LixPackage.compile(hxmlPath);
     _log.spawnResult(lix, 'Succesfully compiled from hxml', 'Unable to compile from hxml');
     if (lix.status) {
@@ -139,7 +139,10 @@ class Builder {
         var code = File.getContent(Path.resolve(path));
         try {
           var filename = Path.parse(path).name;
-          File.saveContent(path, '${fileBanner(filename)} ${Napkin.parse(code, usePrettier)}');
+          File.saveContent(path, '${fileBanner(filename)} ${Napkin.parse(code, {
+            usePrettier: usePrettier,
+            removedUnusedClasses: removeUnusedClasses
+          })}');
         } catch (error: js.lib.Error) {
           _log.prettyError(error);
         }
