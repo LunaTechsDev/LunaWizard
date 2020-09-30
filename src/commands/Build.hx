@@ -17,6 +17,10 @@ class Build extends mcli.CommandLine {
     Disable application of prettier's rules
   **/
   public var noPrettier: Bool = false;
+  /**
+    An option to removed unused classes
+  **/
+  public var unusedClasses: Bool = true;
 
   /** 
     Watch for changes to source files.
@@ -67,7 +71,7 @@ class Build extends mcli.CommandLine {
         _log.clearScreen();
         return _watch(_sourceDir, response.hxmlPath);
       }
-      Builder.compileFromSource(response.hxmlPath, !noPrettier);
+      Builder.compileFromSource(response.hxmlPath, !noPrettier, unusedClasses);
     });
   }
 
