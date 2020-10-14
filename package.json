@@ -7,7 +7,8 @@
     "luna-wizard": "bin/wizard.js"
   },
   "files": [
-    "bin/wizard.js"
+    "bin/wizard.js",
+    "bin/wizard.js.map"
   ],
   "directories": {
     "test": "tests"
