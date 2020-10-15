@@ -1,6 +1,6 @@
 {
   "name": "@lunatechs/luna-wizard",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "A CLI tool for easy setup and configuration of RPG Maker plugin's made with LunaTea.",
   "main": "bin/wizard.js",
   "bin": {
