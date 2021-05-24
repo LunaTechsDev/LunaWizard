@@ -1,4 +1,4 @@
-package wizard;
+package wizard.haxe;
 
 import wizard.utils.ChildSpawn.SpawnResult;
 

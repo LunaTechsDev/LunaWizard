@@ -1,4 +1,4 @@
-package wizard;
+package wizard.haxe;
 
 import sys.FileSystem;
 import prompts.Prompter;
