@@ -3,7 +3,7 @@ package commands;
 import chokidar.Chokidar;
 import prompts.Prompter;
 import wizard.utils.HxmlDiscovery;
-import wizard.Builder;
+import wizard.haxe.Builder;
 import wizard.utils.Logger;
 /**
   Build your project from the hxml file given. If no path was given
