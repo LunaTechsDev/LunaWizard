@@ -1,7 +1,7 @@
 import mcli.Dispatch;
-import wizard.haxe.GuidedSetup;
 import mcli.CommandLine;
 
+import wizard.GuidedSetup;
 import commands.Build;
 
 /**
