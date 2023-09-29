@@ -42,9 +42,9 @@ class Builder {
   }
 
   public static function addGamesDirectory(path: String, compatability: Bool) {
-    if (compatability == false) {
+    if (!compatability) {
       FileSystem.createDirectory('${path}/game');
-      return
+      return;
     }
     if (!FileSystem.exists('${path}/games')) {
       FileSystem.createDirectory('${path}/games');
