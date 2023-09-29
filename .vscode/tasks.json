@@ -24,6 +24,18 @@
       ],
       "group": "build",
       "label": "haxe: hxml/test.hxml"
+    },
+    {
+      "type": "haxe",
+      "args": "active configuration",
+      "problemMatcher": [
+        "$haxe-absolute",
+        "$haxe",
+        "$haxe-error",
+        "$haxe-trace"
+      ],
+      "group": "build",
+      "label": "haxe: active configuration"
     }
   ]
 }

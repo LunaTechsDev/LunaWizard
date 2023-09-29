@@ -1,0 +1,12 @@
+{
+  "[haxe]": {
+    "editor.tabSize": 2,
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true
+  },
+  "haxe.configurations": [
+    ["hxml\\completion.hxml"],
+    ["hxml\\compile.hxml"],
+    ["hxml\\test.hxml"]
+  ],
+}

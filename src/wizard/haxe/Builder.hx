@@ -1,4 +1,4 @@
-package wizard;
+package wizard.haxe;
 
 import js.node.Path;
 import sys.io.File;
